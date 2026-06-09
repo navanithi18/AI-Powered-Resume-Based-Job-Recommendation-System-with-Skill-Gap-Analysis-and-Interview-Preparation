@@ -1,0 +1,73 @@
+@startuml ResearchFlowchart
+!define FONTNAME Times New Roman
+skinparam {
+  backgroundColor #FFFFFF
+  FontName FONTNAME
+  FontSize 11
+  DefaultFontName FONTNAME
+  ArrowColor #000000
+  LineThickness 1.5
+  Padding 10
+}
+
+skinparam rectangle {
+  BackgroundColor #E8F4E8
+  BorderColor #000000
+  BorderThickness 2
+  FontColor #000000
+}
+
+skinparam database {
+  BackgroundColor #FFE8CC
+  BorderColor #000000
+  BorderThickness 2
+  FontColor #000000
+}
+
+skinparam start {
+  BackgroundColor #F5F5F5
+  BorderColor #000000
+  BorderThickness 2
+  FontColor #000000
+}
+
+skinparam end {
+  BackgroundColor #F5F5F5
+  BorderColor #000000
+  BorderThickness 2
+  FontColor #000000
+}
+
+' Start node
+start
+: **Start Analysis**;
+
+' Logic/Process steps - Light Green
+rectangle "ATS Logic" #E8F4E8
+: **ATS Logic**;
+
+rectangle "Skill Gap" #E8F4E8
+: **Skill Gap**;
+
+rectangle "Query Build" #E8F4E8
+: **Query Build**;
+
+rectangle "JSearch API" #E8F4E8
+: **JSearch API**;
+
+' Database step - Light Orange
+database "Store Matches" #FFE8CC
+: **Store Matches**;
+
+' AI steps - Light Purple
+rectangle "AI Summary" #E8D4F1
+: **AI Summary**;
+
+rectangle "Match Rating" #E8D4F1
+: **Match Rating**;
+
+' End node
+: **Analysis Done**;
+end
+
+@enduml

@@ -1,0 +1,13 @@
+project_id = "udyxuzvnzdzlmlxupynq"
+
+[functions.analyze-resume]
+verify_jwt = false
+
+[functions.scrape-jobs]
+verify_jwt = false
+
+[functions.neon-setup]
+verify_jwt = false
+
+[functions.neon-db]
+verify_jwt = false

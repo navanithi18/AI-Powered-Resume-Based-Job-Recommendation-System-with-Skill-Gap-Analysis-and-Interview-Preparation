@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE Standard Flowcharts (9cm x 7.5cm)</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .diagram-outer {
+            background: white;
+            padding: 20px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* UPDATED IEEE DIMENSIONS: 12cm Height, 8cm Width */
+        .diagram-container {
+            width: 8.0cm;
+            height: 12.0cm;
+            border: 1px dashed #ccc;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+        }
+
+        /* Ensure the SVG fits perfectly within the absolute 12x8 boundaries without clipping */
+        .diagram-container svg {
+            max-width: 100% !important;
+            max-height: 100% !important;
+            height: auto !important;
+            width: auto !important;
+        }
+
+        .label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .diagram-outer {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                page-break-after: always;
+            }
+
+            .diagram-container {
+                border: none;
+            }
+
+            .label {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontSize: '14px',
+                fontFamily: 'serif',
+                rankSep: 15, /* Balanced spacing for the 12cm height */
+                nodeSep: 10,
+                lineColor: '#000000',
+                primaryColor: '#ffffff',
+                clusterBkg: 'none'
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="diagram-outer">
+        <div class="label">1. Document Ingestion Layer</div>
+        <div class="diagram-container">
+            <pre class="mermaid">
+graph TD
+    classDef ui fill:#e1f5fe,stroke:#000,stroke-width:3px;
+    classDef logic fill:#e8f5e9,stroke:#000,stroke-width:3px;
+    classDef db fill:#fff3e0,stroke:#000,stroke-width:3px;
+
+    A([Document Upload]) --> B["Security Check"]
+    B --> C["Frontend Process"]
+    C --> D["Edge Function"]
+    D --> E[("Supabase Storage")]
+    E --> F[("DB Metadata")]
+    F --> G([Ingestion Done])
+
+    class A,C ui;
+    class B,D logic;
+    class E,F,G db;
+            </pre>
+        </div>
+    </div>
+
+    <div class="diagram-outer">
+        <div class="label">2. Cognitive Parsing Engine</div>
+        <div class="diagram-container">
+            <pre class="mermaid">
+graph TD
+    classDef logic fill:#e8f5e9,stroke:#000,stroke-width:3px;
+    classDef ai fill:#f3e5f5,stroke:#000,stroke-width:3px;
+
+    A([Start Parsing]) --> B["Create URL"]
+    B --> C["Fetch Blob"]
+    C --> D{"File Type?"}
+    D -->|Text| E["UTF-8 Decode"]
+    D -->|PDF| F["Base64 Encode"]
+    F --> G["AI Extraction"]
+    E --> H["Text Data"]
+    G --> H
+    H --> I["Entity Mapping"]
+    I --> J([Parsing Done])
+
+    class A,B,C,D,E,F,H logic;
+    class G,I,J ai;
+            </pre>
+        </div>
+    </div>
+
+    <div class="diagram-outer">
+        <div class="label">3. Analytical Processor</div>
+        <div class="diagram-container">
+            <pre class="mermaid">
+graph TD
+    classDef logic fill:#e8f5e9,stroke:#000,stroke-width:3px;
+    classDef ai fill:#f3e5f5,stroke:#000,stroke-width:3px;
+    classDef db fill:#fff3e0,stroke:#000,stroke-width:3px;
+
+    A([Start Analysis]) --> B["ATS Logic"]
+    B --> C["Skill Gap"]
+    C --> D["Query Build"]
+    D --> E["JSearch API"]
+    E --> F[("Store Matches")]
+    F --> G["AI Summary"]
+    G --> H["Match Rating"]
+    H --> I([Analysis Done])
+
+    class A,C,D,E logic;
+    class B,G,H ai;
+    class F,I db;
+            </pre>
+        </div>
+    </div>
+
+    <div class="diagram-outer">
+        <div class="label">4. Iterative Feedback Module</div>
+        <div class="diagram-container">
+            <pre class="mermaid">
+graph TD
+    classDef logic fill:#e8f5e9,stroke:#000,stroke-width:3px;
+    classDef ai fill:#f3e5f5,stroke:#000,stroke-width:3px;
+    classDef ui fill:#e1f5fe,stroke:#000,stroke-width:3px;
+
+    A([Start Feedback]) --> B["Parse Meta"]
+    B --> C["Prompt Builder"]
+    C --> D["Question Gen"]
+    D --> E["Diff Logic"]
+    E --> F["Improvement"]
+    F --> G["Storage"]
+    G --> H([Deliver UI])
+
+    class A,B,C,E,G logic;
+    class D,F ai;
+    class H ui;
+            </pre>
+        </div>
+    </div>
+
+</body>
+
+</html>

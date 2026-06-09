@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Research Flowchart (10x7.5cm)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .export-info {
+            background-color: #f1f3f4;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            border: 1px solid #dadce0;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* STRICT IEEE DIMENSIONS: 10cm Height x 7.5cm Width */
+        .academic-figure {
+            width: 7.5cm;
+            height: 10.0cm;
+            border: 1px dashed #007bff;
+            /* Guideline for scaling */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            position: relative;
+        }
+
+        .academic-figure svg {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+        }
+
+        @media print {
+            .export-info {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+            }
+
+            .academic-figure {
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="export-info">
+        <strong>IEEE Publication Ready:</strong> This flowchart is set to exactly 10cm height and 7.5cm width. <br>
+        Use <strong>Ctrl + P</strong> and save as PDF for the highest vector quality.
+    </div>
+
+    <div class="academic-figure">
+        <pre class="mermaid">
+graph TD
+    %% Global Styles
+    classDef start_end fill:#f5f5f5,stroke:#000,stroke-width:1px;
+    classDef logic fill:#e8f5e9,stroke:#000,stroke-width:1px;
+    classDef ai fill:#f3e5f5,stroke:#000,stroke-width:1px;
+    classDef db fill:#fff3e0,stroke:#000,stroke-width:1px;
+
+    %% Nodes
+    A([Start Analysis])
+    B(ATS Logic)
+    C(Skill Gap)
+    D(Query Build)
+    E(JSearch API)
+    F[(Store Matches)]
+    G(AI Summary)
+    H(Match Rating)
+    I([Analysis Done])
+
+    %% Pipeline
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+
+    %% Apply Classes
+    class A,I start_end;
+    class B,C,D,E logic;
+    class F db;
+    class G,H ai;
+
+    %% Formatting
+    style A padding:8px
+    style B padding:8px
+    style C padding:8px
+    style D padding:8px
+    style E padding:8px
+    style F padding:8px
+    style G padding:8px
+    style H padding:8px
+    style I padding:8px
+        </pre>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                fontSize: '14px',
+                fontFamily: 'serif',
+                rankSep: 12, /* Precise separation for 10cm height */
+                nodeSep: 20,
+                lineColor: '#000',
+                primaryTextColor: '#000',
+                tertiaryBorderColor: '#000'
+            }
+        });
+    </script>
+</body>
+
+</html>
